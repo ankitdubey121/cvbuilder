@@ -1,29 +1,32 @@
 <%- include("header.html") %>
-    <div class="container bg-secondary" style="padding: 1rem 2rem 3rem 5rem;">
+    <div class="bg-secondary" style="padding: 1rem 3rem">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 style="margin-bottom: 2rem; color: #fff">Let us know about you</h1>
+                <h1 style="margin-bottom: 1rem; color: #fff">Let us know about you</h1>
             </div>
         </div>
         <div class="row" style="align-items: center;">
             <form action="/" method="post" style=" display: inline-block;">
+
+                <!-- Personal details start -->
+
                 <h2 style="color: #fff; letter-spacing: 2px;"><strong>Personal Details</strong></h2>
                 <div class="row bg-light p-5 rounded text-center">
-                    <p class="text-danger">* All Fields Are Mandatory</p>
+                    <p class="text-danger" style="font-weight: bold">* All fields in this section are mandatory</p>
                     <div class="col-12">
                         <div class="input-group">
-                            <span class="input-group-text rounded" style="margin-right: 1rem;">First and last
+                            <span class="input-group-text col-2 rounded" style="margin-right: 1rem;">First and last
                                 name</span>
                             <input type="text" aria-label="First name" class="form-control rounded"
                                 style="margin-right: 1rem;" name="firstName" required
                                 placeholder="add middle name if any">
                             <input type="text" aria-label="Last name" class="form-control rounded" name="lastName"
-                                required>
+                                required placeholder="Last name">
                         </div>
                         <div class="input-group mt-3">
                             <span class="input-group-text rounded" style="margin-right: 1rem;">Email Address</span>
                             <input type="email" aria-label="Email" class="form-control rounded"
-                                style="margin-right: 1rem;" name="email" required>
+                                style="margin-right: 1rem;" name="email" required placeholder="Johndoe@example.com">
                         </div>
                         <div class="input-group mt-3">
                             <span class="input-group-text rounded" style="margin-right: 1rem;">Contact No</span>
@@ -51,8 +54,8 @@
                 <!-- Qualifications -->
 
                 <h2 style="color: #fff; letter-spacing: 2px;"><strong>Qualifications</strong></h2>
-                <div class="row bg-light p-5 rounded text-center">
-                    <div class="col-12">
+                <div class="row bg-light p-5 rounded text-center" id="qualificationsContainer">
+                    <div class="col-12 mb-3">
                         <div class="input-group">
                             <span class="input-group-text rounded">Matriculation</span>
                             <p class="text-danger" style="margin-right: 1rem;">*</p>  
@@ -74,34 +77,36 @@
                             <input type="number" aria-label="marks in twelfth" class="form-control rounded"
                                 name="marksInTwelfth" required placeholder="Marks in %">
                         </div>
-                        <div class="input-group mt-3">
-                            <span class="input-group-text rounded" style="margin-right: 1rem;">College (UG)</span>
+                        <div class="input-group mt-3" id="qualificationsDiv">
+                            <span class="input-group-text rounded" style="margin-right: 1rem;">College</span>
                             <input type="text" aria-label="university Name" class="form-control rounded"
-                                style="margin-right: 1rem;" name="universityName" required
+                                style="margin-right: 1rem;" name="universityName1" required
                                 placeholder="University Name">
                             <input type="text" aria-label="board" style="margin-right: 1rem;"
-                                class="form-control rounded" name="degreeName" required placeholder="Degree/Course">
+                                class="form-control rounded" name="degreeName1" required placeholder="Degree/Course">
                             <input type="text" aria-label="marks in end sem" class="form-control rounded"
-                                name="cgpa" required placeholder="CGPA (most recent sem)"
+                                name="cgpa1" required placeholder="CGPA (most recent sem)"
                                 style="margin-right: 1rem;">
-                            <label for="" class="input-group-text rounded" style="margin-right: 1rem;">End sem
-                                date</label>
-                            <input type="date" name="dateOfEndSem" id="" class="rounded">
+                            <input type="text" aria-label="College Name" class="form-control rounded"
+                                name="collegeName1" required placeholder="Name of college"
+                                style="margin-right: 1rem;">
                         </div>
+                    </div>
+                    <div class="col-12 text-center pt-4" id="addBtnContainer">
+                        <button class="btn btn-primary col-sm-2 col-lg-2 col-12" id="addMoreQualifications"> Add More</button>
                     </div>
                 </div>
 
 
                 <br>
 
-                <!-- Professional Summary -->
+                <!-- Experience -->
 
-                <h2 style="color: #fff; letter-spacing: 2px;"><strong>Professional Summary</strong></h2>
-                <div class="row bg-light p-5 rounded text-center">
-                    <h3 class="text-secondary mb-5">Past Experience</h3>
-                    <p class="text-danger">*You can add upto 3 job profiles & can also leave them blank</p>
-                    <div class="col-12">
-                        <div class="input-group">
+                 <h2 style="color: #fff; letter-spacing: 2px;"><strong>Experience</strong></h2>
+                <div class="row bg-light p-5 rounded text-center" id="expContainerId">
+                    <h6 class="mb-3 text-danger">Add only maximum of 3 past work experiences/ Leave blank if fresher  </h6>
+                    <div id="expNodeId" class="mb-3">
+                        <div class="input-group mt-3">
                             <span class="input-group-text rounded" style="margin-right: 1rem;">Company Name</span>
                             <input type="text" aria-label="" class="form-control rounded"
                                 style="margin-right: 1rem;" name="companyName1" 
@@ -111,60 +116,31 @@
                             <span class="input-group-text rounded" style="margin-right: 1rem">Position</span>
                             <input type="text" name="post1" id="" style="margin-right: 1rem;"
                                 placeholder="Web Developer" class="form-control rounded">
-                            <span class="input-group-text rounded" style="margin-right: 1rem;">Years Worked</span>
-                            <input type="number" name="yearsWorked1" class="form-control rounded">
+                            <span class="input-group-text rounded" style="margin-right: 1rem;">Year</span>
+                            <input type="text" name="yearsWorked1" class="form-control rounded" placeholder="2016-19">
                         </div>
 
                         <div class="input-group mt-3">
                             <span class="input-group-text rounded" style="margin-right: 1rem">Job Description</span>
-                            <input type="text" name="jobDesc1" id="" class="form-control rounded">
+                            <input type="text" name="jobDesc1" placeholder="My job there was to Troubleshoot and debug issues in web solutions and provide timely and effective solutions" id="" class="form-control rounded">
                         </div>
-                        <div class="input-group mt-5">
-                            <span class="input-group-text rounded" style="margin-right: 1rem;">Company Name</span>
-                            <input type="text" aria-label="" class="form-control rounded"
-                                style="margin-right: 1rem;" name="companyName2" 
-                                placeholder="Google / Facebook / TCS">
-                        </div>
-                        <div class="input-group mt-3">
-                            <span class="input-group-text rounded" style="margin-right: 1rem">Position</span>
-                            <input type="text" name="post2" id="" style="margin-right: 1rem;"
-                                class="form-control rounded" placeholder="Web Developer">
-                            <span class="input-group-text rounded" style="margin-right: 1rem;">Years Worked</span>
-                            <input type="number" name="yearsWorked2" class="form-control rounded">
-                        </div>
+                    </div>
 
-                        <div class="input-group mt-3">
-                            <span class="input-group-text rounded" style="margin-right: 1rem">Job Description</span>
-                            <input type="text" name="jobDesc2" id="" class="form-control rounded">
-                        </div>
-                        <div class="input-group mt-5">
-                            <span class="input-group-text rounded" style="margin-right: 1rem;">Company Name</span>
-                            <input type="text" aria-label="" class="form-control rounded"
-                                style="margin-right: 1rem;" name="companyName3" 
-                                placeholder="Google / Facebook / TCS">
-                        </div>
-                        <div class="input-group mt-3">
-                            <span class="input-group-text rounded" style="margin-right: 1rem">Position</span>
-                            <input type="text" name="post3" id="" style="margin-right: 1rem;"
-                                placeholder="Web Developer" class="form-control rounded">
-                            <span class="input-group-text rounded" style="margin-right: 1rem;">Years Worked</span>
-                            <input type="number" name="yearsWorked3" class="form-control rounded">
-                        </div>
-
-                        <div class="input-group mt-3">
-                            <span class="input-group-text rounded" style="margin-right: 1rem">Job Description</span>
-                            <input type="text" name="jobDesc3" id="" class="form-control rounded">
+                        <!-- Add more btn -->
+                        <div class="col-12 text-center pt-4" id="expBeforeDivId">
+                            <button class="btn btn-primary col-sm-2 col-lg-2 col-12" id="addMoreExpBtn"> Add More</button>
                         </div>
                     </div>
                 </div>
 
                 <br>
 
-                <h2 style="color: #fff; letter-spacing: 2px;"><strong>Personality traits</strong></h2>
+                <h2 style="color: #fff; letter-spacing: 2px;"><strong>Professional Summary</strong></h2>
                 <div class="row bg-light p-5 rounded text-center">
                     <div class="col-12">
                         <div class="input-group mt-3">
-                            <input type="text" name="aboutYou" placeholder="write something about yourself" class="form-control rounded">
+                            <span class="input-group-text">About You</span>
+                            <input type="text" name="aboutYou" placeholder="hardworking, punctual, reliable, individual, quality, work, time-management, continuous-improvement" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -172,39 +148,23 @@
 
                 <br>
 
-                <h2 style="color: #fff; letter-spacing: 2px;"><strong>References</strong></h2>
+                <h2 style="color: #fff; letter-spacing: 2px;"><strong>Skills</strong></h2>
                 <div class="row bg-light p-5 rounded text-center">
-                    <div class="col-12">
-                        <div class="input-group">
-                            <span class="input-group-text rounded" style="margin-right: 1rem">Name</span>
-                            <input type="text" name="name1" id="" class="form-control rounded" required style="margin-right: 1rem;">
-                            <span class="input-group-text rounded" style="margin-right: 1rem">Contact</span>
-                            <input type="number" name="contact1" id="" class="form-control rounded" required  style="margin-right: 1rem;" placeholder="Add STD code">
-                            <span class="input-group-text rounded" style="margin-right: 1rem">Relation</span>
-                            <input type="text" name="relation1" id="" class="form-control rounded" required placeholder="Co-worker">
-                        </div>
+                    <h6 class="mb-3 text-danger">Write skills separated by comma </h6>
+                    <div class="col-12 input-group">
+                        <span class="input-group-text">Skills</span>
+                        <input type="text" name="skills" id="skills" class="form-control" placeholder="security, problem-solving, communication.">
                     </div>
-
-                    <div class="col-12 mt-3">
-                        <div class="input-group">
-                            <span class="input-group-text rounded" style="margin-right: 1rem">Name</span>
-                            <input type="text" name="name2" id="" class="form-control rounded" required style="margin-right: 1rem;">
-                            <span class="input-group-text rounded" style="margin-right: 1rem">Contact</span>
-                            <input type="number" name="contact2" id="" class="form-control rounded" required  style="margin-right: 1rem;" placeholder="Add STD code">
-                            <span class="input-group-text rounded" style="margin-right: 1rem">Relation</span>
-                            <input type="text" name="relation2" id="" class="form-control rounded" required placeholder="Co-worker">
-                        </div>
                     </div>
-
                 </div>
 
                 <div class="input-group mt-3">
-                    <div class="row">
-                        <div class="col-6">
-                            <button type="submit" class=" form-control btn btn-success border border-2">Submit </button>
+                    <div class="row m-auto">
+                        <div class="col-6 text-center">
+                            <button type="submit" class="btn btn-success" style="font-weight: 500; padding: 0.4rem 1rem">Submit </button>
                         </div>
-                        <div class="col-6 ">
-                            <button type="reset" class=" form-control btn btn-success border border-2">Reset</button>
+                        <div class="col-6 text-center">
+                            <button type="reset" class="btn btn-dark">Reset</button>
                         </div>
                     </div>
 
@@ -213,5 +173,64 @@
         </div>
     </div>
 
+<!-- Script -->
+<script>
+    expToken = 1, qualificationsToken = 1
+    // Getting add more btn
+    const addMoreQualificationsbtn = document.getElementById('addMoreQualifications');
+    const addMoreExpBtn = document.getElementById('addMoreExpBtn');
+
+    // Function to add a Node
+    function addNode(containerId, beforeDivId, nodeId, token){
+        const container = document.getElementById(containerId);
+        const beforeDiv = document.getElementById(beforeDivId);
+        const node = document.querySelector(`#${nodeId}`);
+        const clonedSection = node.cloneNode(true);
+
+        // giving name to every input element
+        const input = clonedSection.querySelectorAll('input');
+        console.log(input);
+        input.forEach(input=>{
+            var name = input.getAttribute('name');
+            input.value = ''
+            name = name.slice(0, name.length - 1)
+            name = name + token
+            input.removeAttribute('name')
+            input.setAttribute("name", name)
+        })
+
+        // appending it to the QualificationsContainer
+        container.insertBefore(clonedSection, beforeDiv);
+    }
+
+    // function to prevent default behavior of btn
+    addMoreQualificationsbtn.addEventListener('click', (event)=>{
+        event.preventDefault();
+    })
+    addMoreExpBtn.addEventListener('click', (event)=>{
+        event.preventDefault();
+    })
+
+    // Function to add event listener on click
+    addMoreQualificationsbtn.addEventListener('click', function(){
+        qualificationsToken = qualificationsToken + 1
+        if(qualificationsToken > 3){
+            alert(`can't add more than 3`)
+        }else{
+            addNode('qualificationsContainer', 'addBtnContainer', 'qualificationsDiv', qualificationsToken);
+        }
+    })
+    addMoreExpBtn.addEventListener('click', function(){
+        expToken = expToken + 1   
+        if(expToken > 3) {
+            alert(`can't add more than 3`)
+        }else{
+            addNode('expContainerId', 'expBeforeDivId', 'expNodeId', expToken)
+        }
+    })
+
+
+    
+</script>
 
     <%- include("footer.html") %>

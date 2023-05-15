@@ -4,9 +4,23 @@
     <div class="col-12 text-center  text-white" >
         <h1><%=confirmation%></h1>
     </div>
+    <script>
+        var text = '<%=actiontxt%>'
+        console.log(text)
+    </script>
     <div class="col-12 text-center">
-        <button class="btn btn-primary"> <a id="action-btn" style="text-decoration: none; color: white;" href= <%=action%> > <%=actiontxt%></a></button>
+            <button class="btn btn-primary text-white" onclick="hrefGenerator()"> <%=actiontxt%></button>
     </div>
 </div>
+
+<script>
+    function hrefGenerator(){
+        if(text == "Go Back"){
+            history.back()
+        }else{
+            window.location.href = 'http://localhost:3000/resume'
+        }
+    }
+</script>
 
 <%- include("footer.html") %>

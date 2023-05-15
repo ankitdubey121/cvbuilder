@@ -14,13 +14,42 @@
 	<link rel="stylesheet" type="text/css"
 		href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" media="all" />
 
+
 </head>
 
 <body>
+	
 
 	<style>
+
+		.btn{
+			display: inline-block;
+			outline: none;
+			cursor: pointer;
+			font-weight: 500;
+			border: 1px solid transparent;
+			border-radius: 2px;
+			height: 36px;
+			line-height: 34px;
+			font-size: 14px;
+			color: #ffffff;
+			background-color: #007c89;
+			transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+			padding: 0 18px;
+		}
+		.btn:hover {
+                        color: #ffffff;
+                        background-color: #006570;
+                    }
+
+		#downloadLink{
+			color: white;
+			text-decoration: none;
+			font-size: large;
+		}
+		
 		.msg {
-			padding: 10px;
+			/* padding: 10px; */
 			background: #222;
 			position: relative;
 		}
@@ -49,10 +78,8 @@
 
 		#inner {
 			padding: 10px 80px;
-			margin: 80px auto;
+			margin: 0px auto;
 			background: #f5f5f5;
-			border: solid #666;
-			border-width: 8px 0 2px 0;
 		}
 
 		.yui-gf {
@@ -132,13 +159,19 @@
 			font-weight: bold;
 		}
 
+		.skills-li{
+			border-bottom: none;
+			list-style: decimal;
+			font-size: 18px;
+		}
+
 		li {
 			line-height: 24px;
 			border-bottom: 1px solid #ccc;
 		}
 
 		p.enlarge {
-			font-size: 144%;
+			font-size: 18px;
 			padding-right: 6.5em;
 			line-height: 24px;
 		}
@@ -183,6 +216,28 @@
 			border-bottom: 1px solid #ccc;
 		}
 
+		.job2 {
+			position: relative;
+			margin-bottom: 1em;
+			/* padding-bottom: 1em; */
+			/* border-bottom: 1px solid #ccc; */
+		}
+
+		.job3 {
+			position: relative;
+			margin-bottom: 1em;
+			/* padding-bottom: 1em; */
+			/* border-bottom: 1px solid #ccc; */
+		}
+
+		.job h1, h2, h3, h4{
+			margin-bottom: 0.6rem;
+		}
+
+		.job-desc{
+			font-size: 17px;
+		}
+
 		.job h4 {
 			position: absolute;
 			top: 0.35em;
@@ -197,7 +252,7 @@
 			border: none;
 		}
 
-		.skills-list ul {
+		/* .skills-list ul {
 			margin: 0;
 		}
 
@@ -211,9 +266,10 @@
 			display: block;
 			margin-bottom: -2px;
 			padding: 0
-		}
+		} */
 
 		.talent {
+			font-size: 16px;
 			width: 32%;
 			float: left
 		}
@@ -322,23 +378,41 @@
 							<div class="yui-u">
 								<ul class="talent">
 									<li>
-										<%=universityName%>
+										<%=universityName1%>
 									</li>
 									<li>
-										<%=degreeName%>
+										<%=degreeName1%>
 									</li>
 									<li>
-										<%=cgpa%>
+										<%=cgpa1%>
 									</li>
 									<li class='last'>
-										<%=dateOfEndSem%>
+										<%= collegeName1%>
 									</li>
 								</ul>
 							</div>
+							<% if(universityName2) { %>
+							<div class="yui-u">
+								<ul class="talent">
+									<li>
+										<%=universityName2%>
+									</li>
+									<li>
+										<%=degreeName2%>
+									</li>
+									<li>
+										<%=cgpa2%>
+									</li>
+									<li class='last'>
+										<%= collegeName2%>
+									</li>
+								</ul>
+							</div>
+							<% } %>
 						</div>
 
 
-
+							<h2 style="margin-bottom: 20px">Work Experience</h2>
 							<div class="job">
 								<h2>
 									<%= job1 %>
@@ -347,97 +421,125 @@
 									<%= post1 %>
 								</h3>
 								<h4>
-									<%= yearsWorked1 %> yrs
+									<%= yearsWorked1 %>
 								</h4>
-								<p>
+								<p class="job-desc">
 									<%= jobDesc1 %>
 								</p>
+								<%if(job2){ %>
+								<div class="job2">
+									<h2>
+										<%= job2 %>
+									</h2>
+									<h3>
+										<%= post2 %>
+									</h3>
+									<h4>
+										<%= yearsWorked2 %>
+									</h4>
+									<p class="job-desc">
+										<%= jobDesc2 %>
+									</p>
+								</div>
+								<% } %>
+
+								<%if(job3){ %>
+								<div class="job3">
+									<h2>
+										<%= job3 %>
+									</h2>
+									<h3>
+										<%= post3 %>
+									</h3>
+									<h4>
+										<%= yearsWorked3 %> 
+									</h4>
+									<p class="job-desc">
+										<%= jobDesc3 %>
+									</p>
+								</div>
+								<% } %>
 							</div>
 
-							<div class="job">
-								<h2>
-									<%= job2 %>
-								</h2>
-								<h3>
-									<%= post2 %>
-								</h3>
-								<h4>
-									<%= yearsWorked2 %> yrs
-								</h4>
-								<p>
-									<%= jobDesc2 %>
-								</p>
-							</div>
+				<!--	</div>
 
+				 </div>  -->
 
-							<div class="job">
-								<h2>
-									<%= job3 %>
-								</h2>
-								<h3>
-									<%= post3 %>
-								</h3>
-								<h4>
-									<%= yearsWorked3 %> yrs 
-								</h4>
-								<p>
-									<%= jobDesc3 %>
-								</p>
-						</div>
-
-
-					</div>
-					<!--// .yui-u -->
-				</div>
-				<!--// .yui-gf -->
-
-
+<!-- 
 				<div class="yui-gf last">
 					<div class="yui-u first">
 						<h2>References</h2>
 					</div>
 					<div class="yui-u">
 						<h2>
-							<%=name1%>
+							name1%>
 						</h2>
 						<h3>
-							<%=contact1%>
+							contact1%>
 						</h3>
 						<p>
-							<%=relation1%>
+							relation1%>
 						</p>
+					</div>
+				</div> -->
+
+
+				<div class="yui-gf">
+					<div class="yui-u first">
+						<h2>Skills</h2>
+					</div>
+					<div class="yui-u" id="skillsContainer">
+						<script>
+							const arr = '<%=skills%>'
+						 function makeList(){ 
+							const container = document.getElementById('skillsContainer')
+							const items = arr.split(',')
+							const ul = document.createElement('ul');
+							items.forEach(function(item){
+								const li = document.createElement('li');
+								li.textContent = item.trim();
+								li.setAttribute('class', 'skills-li')
+								ul.appendChild(li)
+							});
+							container.appendChild(ul)
+						} 
+						makeList()
+						</script>
 					</div>
 				</div>
 
-				<div class="yui-gf last">
+
+			<!--	<div class="yui-gf last">
 					<div class="yui-u">
 						<h2>
-							<%=name2%>
+							name2%>
 						</h2>
 						<h3>
-							<%=contact2%>
+							contact2%>
 						</h3>
 						<p>
-							<%=relation2%>
+							relation2%>
 						</p>
 					</div>
 				</div>
-				<!--// .yui-gf -->
 
 
 			</div>
-			<!--// .yui-b -->
-		</div>
-		<!--// yui-main -->
+		</div> -->
+
 	</div>
-	<!--// bd -->
+	<!-- // bd -->
 
 	<!--// footer -->
 
 	</div><!-- // inner -->
 
-
+	<button class="removeInPdf btn btn-danger"> <a id="downloadLink" href="http://localhost:3000/downloadPdf">Download your resume in pdf</a></button>
+	<!-- <button class="removeInPdf"> <a href="http://localhost:3000/emailPdf">Send by email</a></button> -->
 	</div>
+
+	
+
 
 </body>
 
