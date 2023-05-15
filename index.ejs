@@ -31,7 +31,7 @@
                         <div class="input-group mt-3">
                             <span class="input-group-text rounded" style="margin-right: 1rem;">Contact No</span>
                             <input type="number" aria-label="Contact" class="form-control form"
-                                style="margin-right: 1rem;" name="contactNo" required placeholder="Add STD Code">
+                                style="margin-right: 1rem;" name="contactNo" required>
                         </div>
                         <div class="input-group mt-3">
                             <span class="input-group-text rounded" style="margin-right: 1rem;">Age</span>
@@ -214,7 +214,7 @@
     // Function to add event listener on click
     addMoreQualificationsbtn.addEventListener('click', function(){
         qualificationsToken = qualificationsToken + 1
-        if(qualificationsToken > 3){
+        if(qualificationsToken > 2){
             alert(`can't add more than 3`)
         }else{
             addNode('qualificationsContainer', 'addBtnContainer', 'qualificationsDiv', qualificationsToken);

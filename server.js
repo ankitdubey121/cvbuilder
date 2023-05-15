@@ -26,6 +26,8 @@ app.post('/', (req, res) => {
     token += 1;
     firstName = autoCapitalize(req.body.firstName.trim());
     lastName = autoCapitalize(req.body.lastName.trim());
+    gender = autoCapitalize(req.body.gender)
+    age = req.body.age
     email = req.body.email.trim();
     contactNo = req.body.contactNo;
     age = req.body.age;
@@ -57,14 +59,14 @@ app.post('/', (req, res) => {
     yearsWorked2 = req.body.yearsWorked2;
     yearsWorked3 = req.body.yearsWorked3;
     aboutYou = req.body.aboutYou;
-    skills = autoCapitalize(req.body.skills)
+    skills = req.body.skills
 
     // Validation
 
 
 
 
-    userDetails.push(firstName, lastName, email, contactNo, age, gender, schoolNameTenth, boardTenth, marksInTenth, schoolNameTwelfth, boardTwelfth, marksInTwelfth, universityName1, degreeName1, collegeName1, cgpa1, universityName2, degreeName2, collegeName2, cgpa2, companyName1, post1, jobDesc1, yearsWorked1,companyName2, post2, jobDesc2, yearsWorked2,companyName3, post3, jobDesc3, yearsWorked3, skills);
+    userDetails.push(firstName+" "+lastName, email, contactNo, age, gender, aboutYou, schoolNameTenth, boardTenth, marksInTenth, schoolNameTwelfth, boardTwelfth, marksInTwelfth, universityName1, degreeName1, collegeName1, cgpa1, universityName2, degreeName2, collegeName2, cgpa2, companyName1, post1, jobDesc1, yearsWorked1,companyName2, post2, jobDesc2, yearsWorked2,companyName3, post3, jobDesc3, yearsWorked3, skills);
     console.log(userDetails);
     flag = true;
     for(var i=0; i<userDetails.length; i++){

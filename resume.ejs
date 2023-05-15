@@ -70,9 +70,12 @@
 			background: #266400;
 		}
 
+		.header-info{
+			font-size: 16px;
+		}
 		/* //-- yui-grids style overrides -- */
 		body {
-			font-family: Georgia;
+			font-family: Garamond;
 			color: #444;
 		}
 
@@ -120,7 +123,7 @@
 
 		/* //-- core typography and style -- */
 		#hd h1 {
-			font-size: 48px;
+			font-size: 43px;
 			text-transform: uppercase;
 			letter-spacing: 3px;
 		}
@@ -320,6 +323,10 @@
 								<%=contactNo%>
 							</h3>
 						</div>
+						<div>
+							<span class="header-info"><%=age%></span>
+							<span class="header-info"><%=gender%></span>
+						</div>
 						<!--// .contact-info -->
 					</div>
 				</div>
@@ -401,10 +408,10 @@
 										<%=degreeName2%>
 									</li>
 									<li>
-										<%=cgpa2%>
-									</li>
-									<li class='last'>
 										<%= collegeName2%>
+									</li>
+									<li  class='last'>
+										<%=cgpa2%>
 									</li>
 								</ul>
 							</div>
