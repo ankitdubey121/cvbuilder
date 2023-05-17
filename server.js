@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const bodyParser = require('body-parser')
 const mailToUser = require('./modules/mailToUser')
 const pdf = require('./modules/downloadPdf')
@@ -12,12 +14,35 @@ var contactNo;
 let token = 0; 
 const userDetails = []
 
-app.use( express.static( "public" ));
+// app.use( express.static( "public" ));
 app.use(bodyParser.urlencoded({extended:true}));
-
+app.use(express.static('resumePdfs'));
 
 app.get("/", (req, res) =>{
     userDetails.length = 0;
+    // deleting all previous pdfs
+
+const directoryPath = 'resumePdfs'; 
+
+fs.readdir(directoryPath, (err, files) => {
+  if (err) {
+    console.error('Error reading directory:', err);
+    return;
+  }
+
+  files.forEach((file) => {
+    if (path.extname(file) === '.pdf') {
+      fs.unlink(path.join(directoryPath, file), (err) => {
+        if (err) {
+          console.error(`Error deleting file ${file}:`, err);
+        } else {
+          console.log(`Deleted file ${file}`);
+        }
+      });
+    }
+  });
+});
+
     res.render(__dirname + "/index.ejs");
 });
 
@@ -62,10 +87,6 @@ app.post('/', (req, res) => {
     skills = req.body.skills
 
     // Validation
-
-
-
-
     userDetails.push(firstName+" "+lastName, email, contactNo, age, gender, aboutYou, schoolNameTenth, boardTenth, marksInTenth, schoolNameTwelfth, boardTwelfth, marksInTwelfth, universityName1, degreeName1, collegeName1, cgpa1, universityName2, degreeName2, collegeName2, cgpa2, companyName1, post1, jobDesc1, yearsWorked1,companyName2, post2, jobDesc2, yearsWorked2,companyName3, post3, jobDesc3, yearsWorked3, skills);
     console.log(userDetails);
     flag = true;
@@ -98,9 +119,33 @@ app.get('/downloadPdf', (req, res)=>{
     if(userDetails.length < 1){
         res.sendStatus(401)
     }else{
-        pdf.downloadPDF('http://localhost:3000/resume', './resumePdfs/')
+        pdf.generatePDF('http://localhost:3000/resume', './resumePdfs/').then(() => {
+            //PDF download code here
+            res.redirect('/resume.pdf')
+          })
+          .catch((error) => {
+            console.error('PDF generation error:', error);
+          });
+        console.log('downloaded')
     }
 })
+
+app.get('/resume.pdf', (req, res) => {
+    const { filename } ='resume.pdf';
+    console.log(filename)
+    const filePath = `resumePdfs/${filename}`;
+    
+    // Set appropriate headers for content disposition and content type
+    res.setHeader('Content-Disposition', `inline; filename="${filename}"`);
+    res.setHeader('Content-Type', 'application/pdf');
+    
+    // Stream the file to the response
+    const fileStream = fs.createReadStream(filePath);
+    fileStream.pipe(res);
+  });
+
+
+  // Sending resume via email to user
 
 // app.get('/emailPdf', (req, res)=>{
 //     if(userDetails.length < 1){
@@ -109,10 +154,6 @@ app.get('/downloadPdf', (req, res)=>{
 //         mailToUser();
 //     }
 // })
-
-
-// Sending resume via email to user
-
 
 
 
